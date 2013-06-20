@@ -1,0 +1,155 @@
+$color1 : #f16d95;
+$color2 : #e40045;
+$color3 : #94002d;
+$max-width : 960px;
+$side-width: 250px;
+$breakpoint: 640px;
+
+
+@mixin mq-max($maxwidth: $breakpoint) {
+	@media(max-width:$maxwidth) {
+		@content;
+	}
+}
+
+
+/*
+ * reset, default
+ */
+p,
+ul, li,
+hr,
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: 100%;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+
+a {
+	color: $color1;
+	text-decoration: underline;
+	
+	&:hover {
+		background-color: #ffddee;
+		text-decoration: none;
+	}
+	
+	&:visited {
+		color: $color3;
+	}
+}
+
+hr {
+	border-top: 1px solid #fefefe;
+	border-bottom: 1px solid #e8e8e8;
+	margin: 2em 0;
+}
+
+
+/*
+ * layout
+ */
+body {
+	color: #444;
+	background-color: #f9f9f9;
+	font-family: 'Open Sans', 'メイリオ', Helvetica, Arial, sans-serif;
+	max-width: $max-width;
+	margin: 0 auto;
+	
+	@include mq-max($max-width) {
+		margin: 0 0.5em;
+	};
+}
+
+
+header {
+	margin-top: 1em;
+}
+
+#main {
+	float: left;
+	box-sizing: border-box;
+	margin-right: -250px;
+	padding-right: 250px;
+	width: 100%;
+	
+	@include mq-max {
+		float: none;
+		margin-right: 0;
+		padding-right: 0;
+	}
+}
+
+#sidebar {
+	float: left;
+	width: 200px;
+	margin-left: 50px;
+	
+	@include mq-max {
+		float: none;
+		width: auto;
+		margin-left: 0;
+	}
+}
+
+footer {
+	clear: both;
+	color: #f16d95;
+	margin: 2em 0 4em;
+}
+
+
+/*
+ * parts
+ */
+h1 {
+	font-size: 32px;
+	font-weight: bold;
+}
+	h1 a {
+		color: inherit;
+		text-decoration: none;
+	}
+	h1 a:hover {
+		background-color: inherit;
+	}
+	h1 a:visited {
+		color: inherit;
+	}
+
+header nav ul {
+	overflow: hidden;
+	text-align: right;
+}
+	header nav li {
+		display: inline-block;
+		margin-right: 2em;
+	}
+	header nav li:last-child {
+		margin-right: 0;
+	}
+
+h2 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#sidebar section {
+	margin-bottom: 2em;
+}
+	#sidebar section h3 {
+		margin-bottom: 0.5em;
+		margin-left: -16px;
+		padding-left: 12px;
+		border-left: 4px solid #f16d95;
+		font-weight: bold;
+
+		@include mq-max {
+			margin-left: 0;
+		}
+	}
