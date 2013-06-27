@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{block:PostSummary}{PostSummary} | {/block:PostSummary}{Title}</title>
+{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+<meta name="viewport" content="width=device-width">
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://dl.dropboxusercontent.com/u/267538/tumblr/plumnote/plumnote.css" charset="utf-8">
+<meta name="color:Text" content="#444444">
+<meta name="color:Background" content="#f9f9f9">
+<meta name="color:Main Link Text" content="#f16d95">
+<meta name="color:Sub Link Text" content="#94002d">
+<meta name="color:Link Background" content="#ffddee">
+<meta name="if:Show Sidebar About" content="1">
+<meta name="text:Sidebar About Text" content="">
+<meta name="if:Show Post Author" content="1">
+<meta name="if:Show Post Author Icon" content="1">
+<style type="text/css" media="screen">
+body {
+	color: {color:Text};
+	background-color: {color:Background};
+}
+a {
+	color: {color:Sub Link Text};
+}
+a:hover {
+	background-color: {color:Link Background};
+}
+#main a,
+#main article h2 {
+	color: {color:Main Link Text};
+}
+#main article h3,
+#main article h4,
+#main article h5,
+#main article h6 {
+	color: {color:Sub Link Text};
+	border-left-color: {color:Sub Link Text};
+}
+#main .post-meta a {
+	color: {color:Sub Link Text};
+}
+#main article h2,
+#sidebar section h3 {
+	border-left: 4px solid {color:Main Link Text};
+}
+
+{CustomCSS}
+</style>
+</head>
+
+<body>
+<header>
+    <h1><a href="/">{Title}</a></h1>
+	{block:Description}
+		<div id="description">{Description}</div>
+	{/block:Description}
+	
+	<nav>
+		<ul>
+			<li><a href="/">{lang:Home}</a></li>
+			{block:HasPages}
+			{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+			{/block:HasPages}
+			<li><a href="/archive">{lang:Archive}</a></li>
+			<li><a href="{RSS}">{lang:RSS}</a></li>
+		</ul>
+	</nav>
+	
+	<hr />
+</header>
+
+
+<div id="main">
+	{block:SearchPage}
+		<h4 id="indexHeader">{lang:Search}: <strong>{SearchQuery}</strong> ({lang:SearchResultCount results})</h4>
+		{block:NoSearchResults}<p>{lang:Sorry no search results found}</p>{/block:NoSearchResults}
+	{/block:SearchPage}
+	{block:TagPage}<h4 id="indexHeader">{lang:Tagged with} <strong>{Tag}</strong></h4>{/block:TagPage}
+	{block:DayPage}<h4 id="indexHeader">{lang:Show all posts made on this day} <strong>{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}</strong></h4>{/block:DayPage}
+	
+	
+	{block:Posts}
+	<div class="posts autopagerize_page_element">
+		<article id="post-{PostID}">
+			{block:Title}
+				{block:IndexPage}<h2><a href="{Permalink}">{Title}</a></h2>{/block:IndexPage}
+				{block:PermalinkPage}<h2>{Title}</h2>{/block:PermalinkPage}
+			{/block:Title}
+
+			{block:Text}
+				<div class="post-text">{Body}</div>
+			{/block:Text}
+
+			{block:Photo}
+				<div class="post-photo">
+					{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				</div>
+				{block:Caption}<div class="post-caption">{Caption}</div>{/block:Caption}
+			{/block:Photo}
+
+			{block:Photoset}
+				<div class="post-photoset">{Photoset-500}</div>
+				{block:Caption}<div class="post-caption">{Caption}</div>{/block:Caption}
+			{/block:Photoset}
+
+			{block:Quote}
+				<div class="post-quote">{Quote}</div>
+				{block:Source}<div class="post-caption">{Source}</div>{/block:Source}
+			{/block:Quote}
+
+			{block:Link}
+				<div class="post-link"><a href="{URL}" {Target}>{Name}</a></div>
+				{block:Description}<div class="post-caption">{Description}</div>{/block:Description}
+			{/block:Link}
+
+			{block:Chat}
+				<div class="post-chat">
+					<ul>
+					{block:Lines}
+						<li class="{Alt}">{block:Label}<span class="label">{Label}</span> {/block:Label}{Line}</li>
+					{/block:Lines}
+					</ul>
+				</div>
+			{/block:Chat}
+
+			{block:Audio}
+				<div class="post-audio">{AudioPlayerWhite}</div>
+				{block:Caption}<div class="post-caption">{Caption}</div>{/block:Caption}
+			{/block:Audio}
+
+			{block:Video}
+				<div class="post-video">{Video-500}</div>
+				{block:Caption}<div class="post-caption">{Caption}</div>{/block:Caption}
+			{/block:Video}
+
+			<div class="post-meta">
+				<div class="social-buttons">
+					<iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:20px;" allowTransparency="true"></iframe>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}">Tweet</a>
+				</div>
+
+				{block:IfShowPostAuthorIcon}
+				<img class="post-icon" src="{PostAuthorPortraitURL-24}">
+				{/block:IfShowPostAuthorIcon}
+
+				{block:HasTags}
+				<span>{lang:Tags}{block:Tags}. <a href="{TagURL}">{Tag}</a>{/block:Tags}</span>
+				{/block:HasTags}
+				{block:NoteCount}
+				&nbsp;
+				<span><a href="{Permalink}#notes">{NoteCountWithLabel}</a></span>
+				{/block:NoteCount}
+				<br />
+				{block:Date}
+				<span><a href="{Permalink}">{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</a></span>
+				&nbsp;
+				{/block:Date}
+				{block:IfShowPostAuthor}
+				<span>{lang:By PostAuthorName 2}</span>
+				{/block:IfShowPostAuthor}
+
+				{block:Permalink}
+					{block:HasTags}
+					   <script src="http://tumblr-in-link.googlecode.com/svn/trunk/js/tumblr-in-link.1.0.js?num=5&len=60&css=empty&title=Related Posts&tags={block:Tags}{Tag},{/block:Tags}" type="text/javascript"></script>
+					{/block:HasTags} 
+				{/block:Permalink}
+			</div>
+		</article>
+		<hr />
+	</div>
+	{/block:Posts}
+	
+	
+	{block:PostNotes}
+		<div id="notes">{PostNotes}</div>
+		<hr />
+	{/block:PostNotes}
+
+	
+	{block:Pagination}
+		<nav class="pagination autopagerize_insert_before">
+			{block:PreviousPage}<a href="{PreviousPage}" class="prev">&larr; {lang:Newer}</a>{/block:PreviousPage}
+			{block:NextPage}<a href="{NextPage}" class="next" rel="next">{lang:Older} &rarr;</a>{/block:NextPage}
+		</nav>
+	{/block:Pagination}
+	{block:PermalinkPagination}
+		<nav class="pagination autopagerize_insert_before">
+			{block:NextPost}<a href="{NextPost}" class="prev">&larr; {lang:Newer}</a>{/block:NextPost}
+			{block:PreviousPost}<a href="{PreviousPost}" class="next" rel="next">{lang:Older} &rarr;</a>{/block:PreviousPost}
+		</nav>
+	{/block:PermalinkPagination}
+	{block:DayPagination}
+		<nav class="pagination autopagerize_insert_before">
+			{block:NextDayPage}<a href="{NextDayPage}" class="prev">&larr; {lang:Newer}</a>{/block:NextDayPage}
+			{block:PreviousDayPage}<a href="{PreviousDayPage}" class="next" rel="next">{lang:Older} &rarr;</a>{/block:PreviousDayPage}
+		</nav>
+	{/block:DayPagination}
+</div>
+
+
+<aside id="sidebar">
+	{block:IfShowSidebarAbout}
+	<section class="sidebar-about">
+		<h3>{lang:About me}</h3>
+		<div>
+			<img src="{PortraitURL-48}" class="portrait" alt="{Title}">
+			{text:Sidebar About Text}
+		</div>
+	</section>
+	{/block:IfShowSidebarAbout}
+
+<!--	
+	<section>
+		<h3>Search</h3>
+		<div>
+			<form action="/search" method="get">
+				<input type="text" name="q" value="{SearchQuery}"><input type="submit" value="Search">
+			</form>
+		</div>
+	</section>
+-->
+
+	<section class="sidebar-recent">
+		<h3>{lang:Newer posts}</h3>
+		<div></div>
+	</section>
+	
+	<section class="sidebar-tags">
+		<h3>{lang:Tags}</h3>
+		<div>
+			<script type="text/javascript" src="http://rive.rs/javascripts/tumblr.min.js?minsize=100&maxsize=200&order=alphabetical"></script>
+		</div>
+	</section>
+	
+	<section class="sidebar-archive">
+		<h3>{lang:Archive}</h3>
+		<div id="monthly-archive"></div>
+		<script type="text/javascript" src="http://matsuoshi.github.io/tumblr-monthly-archive/tumblr-monthly-archive.js"></script>
+	</section>
+</aside>
+
+	
+<footer>
+	Powered by <a href="http://www.tumblr.com/">Tumblr</a> with <a href="http://plumnote.tumblr.com/">Plumnote theme</a>.
+</footer>
+
+
+<script type="text/javascript " src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+<script type="text/javascript " src="http://dl.dropboxusercontent.com/u/267538/tumblr/plumnote/plumnote.js"></script>
+<script type="text/javascript" src="/api/read/json?callback=plumnote.recent_posts&amp;num=5"></script>
+</body>
+</html>
