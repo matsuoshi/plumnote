@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0;
 	border: none;
 	font-size: 100%;
-	font-weight: normal;
+	font-weight: inherit;
 }
 li {
 	list-style: none;
@@ -52,7 +52,6 @@ hr {
  * layout
  */
 body {
-	font-family: 'Open Sans', 'メイリオ', Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	max-width: $max-width;
 	margin: 0 auto;
@@ -145,6 +144,10 @@ header {
 #main {
 	#indexHeader {
 		margin-bottom: 30px;
+	}
+	
+	hr {
+		margin-bottom: 3em;
 	}
 	
 	article {
@@ -299,12 +302,19 @@ header {
 			font-weight: normal;
 			border-left: none;
 		}
+		
+		blockquote {
+			border-left: 4px solid #eee;
+			margin: 1em;
+			padding: 3px 1em;
+			font-weight: bold;
+		}
+		
+		hr {
+			margin: 2em;
+		}
 	}
 
-	hr {
-		margin-bottom: 3em;
-	}
-	
 	ol.notes {
 		font-size: 11px;
 		li {

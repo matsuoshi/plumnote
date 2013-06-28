@@ -14,7 +14,7 @@ Plumnote : simple Tumblr theme
 - 関連記事の表示
 	- [tumblr-in-link](https://code.google.com/p/tumblr-in-link/)
 - 最近の投稿リストの表示
-- タグクラウド
+- タグクラウド表示
 	- [Tumblr Tag Clouds](http://rive.rs/projects/tumblr-tag-clouds/)
 - 月別アーカイブの表示
 	- [tumblr-monthly-archive](https://github.com/matsuoshi/tumblr-monthly-archive)

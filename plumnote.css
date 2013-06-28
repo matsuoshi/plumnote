@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
  * reset, default
  */
@@ -11,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   border: none;
   font-size: 100%;
-  font-weight: normal;
+  font-weight: inherit;
 }
 
 li {
@@ -40,7 +39,6 @@ hr {
  * layout
  */
 body {
-  font-family: 'Open Sans', 'メイリオ', Helvetica, Arial, sans-serif;
   font-size: 14px;
   max-width: 960px;
   margin: 0 auto;
@@ -127,6 +125,9 @@ header nav ul li {
 
 #main #indexHeader {
   margin-bottom: 30px;
+}
+#main hr {
+  margin-bottom: 3em;
 }
 #main article {
   margin: 0 16px 3em;
@@ -265,8 +266,14 @@ header nav ul li {
   font-weight: normal;
   border-left: none;
 }
-#main hr {
-  margin-bottom: 3em;
+#main article blockquote {
+  border-left: 4px solid #eee;
+  margin: 1em;
+  padding: 3px 1em;
+  font-weight: bold;
+}
+#main article hr {
+  margin: 2em;
 }
 #main ol.notes {
   font-size: 11px;

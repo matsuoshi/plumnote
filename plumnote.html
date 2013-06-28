@@ -2,18 +2,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>{block:PostSummary}{PostSummary} | {/block:PostSummary}{Title}</title>
-{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
 <meta name="viewport" content="width=device-width">
-<link rel="shortcut icon" href="{Favicon}">
-<link rel="alternate" type="application/rss+xml" href="{RSS}">
+<title>{block:PostSummary}{PostSummary} | {/block:PostSummary}{Title}</title>
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="http://matsuoshi.github.io/plumnote/plumnote.css" charset="utf-8">
+
 <meta name="color:Text" content="#444444">
 <meta name="color:Background" content="#f9f9f9">
 <meta name="color:Main Link Text" content="#f16d95">
@@ -23,8 +18,13 @@
 <meta name="text:Sidebar About Text" content="">
 <meta name="if:Show Post Author" content="1">
 <meta name="if:Show Post Author Icon" content="1">
+
+<link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://matsuoshi.github.io/plumnote/plumnote.css" charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <style type="text/css" media="screen">
 body {
+	font-family: 'Open Sans', 'メイリオ', Helvetica, Arial, sans-serif;
 	color: {color:Text};
 	background-color: {color:Background};
 }
@@ -55,6 +55,10 @@ a:hover {
 
 {CustomCSS}
 </style>
+
+{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
 </head>
 
 <body>
@@ -145,7 +149,7 @@ a:hover {
 			<div class="post-meta">
 				<div class="social-buttons">
 					<iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:20px;" allowTransparency="true"></iframe>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}">Tweet</a>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
 				</div>
 
 				{block:IfShowPostAuthorIcon}
@@ -159,7 +163,7 @@ a:hover {
 				&nbsp;
 				<span><a href="{Permalink}#notes">{NoteCountWithLabel}</a></span>
 				{/block:NoteCount}
-				<br />
+				<br>
 				{block:Date}
 				<span><a href="{Permalink}">{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</a></span>
 				&nbsp;
@@ -168,6 +172,12 @@ a:hover {
 				<span>{lang:By PostAuthorName 2}</span>
 				{/block:IfShowPostAuthor}
 
+				{block:RebloggedFrom}
+				<br>
+				<strong>({lang:Reblogged from ReblogParentName 2})</strong>
+				{/block:RebloggedFrom}
+
+			
 				{block:Permalink}
 					{block:HasTags}
 					   <script src="http://tumblr-in-link.googlecode.com/svn/trunk/js/tumblr-in-link.1.0.js?num=5&len=60&css=empty&title=Related Posts&tags={block:Tags}{Tag},{/block:Tags}" type="text/javascript"></script>
