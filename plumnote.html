@@ -18,6 +18,8 @@
 <meta name="text:Sidebar About Text" content="">
 <meta name="if:Show Post Author" content="1">
 <meta name="if:Show Post Author Icon" content="1">
+<meta name="if:Show Related Posts" content="1">
+<meta name="text:Google Analytics ID" content="" />
 
 <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="http://matsuoshi.github.io/plumnote/plumnote.css" charset="utf-8">
@@ -59,6 +61,11 @@ a:hover {
 {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
 <link rel="shortcut icon" href="{Favicon}">
 <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="{block:Description}{MetaDescription}{/block:Description}">
+<meta property="og:image" content="{PortraitURL-128}" />
+{block:PermalinkPage}{block:Posts}{block:Photo}<meta property="og:image" content="{PhotoURL-250}" />{/block:Photo}{/block:Posts}{/block:PermalinkPage}
 </head>
 
 <body>
@@ -178,11 +185,13 @@ a:hover {
 				{/block:RebloggedFrom}
 
 			
-				{block:Permalink}
-					{block:HasTags}
-					   <script src="http://tumblr-in-link.googlecode.com/svn/trunk/js/tumblr-in-link.1.0.js?num=5&len=60&css=empty&title=Related Posts&tags={block:Tags}{Tag},{/block:Tags}" type="text/javascript"></script>
-					{/block:HasTags} 
-				{/block:Permalink}
+				{block:IfShowRelatedPosts}
+					{block:Permalink}
+						{block:HasTags}
+						   <script src="http://tumblr-in-link.googlecode.com/svn/trunk/js/tumblr-in-link.1.0.js?num=5&len=60&css=empty&title=Related Posts&tags={block:Tags}{Tag},{/block:Tags}" type="text/javascript"></script>
+						{/block:HasTags} 
+					{/block:Permalink}
+				{/block:IfShowRelatedPosts}
 			</div>
 		</article>
 		<hr />
@@ -222,7 +231,7 @@ a:hover {
 	<section class="sidebar-about">
 		<h3>{lang:About me}</h3>
 		<div>
-			<img src="{PortraitURL-48}" class="portrait" alt="{Title}">
+			<a href="/"><img src="{PortraitURL-48}" class="portrait" alt="{Title}"></a>
 			{text:Sidebar About Text}
 		</div>
 	</section>
@@ -247,7 +256,7 @@ a:hover {
 	<section class="sidebar-tags">
 		<h3>{lang:Tags}</h3>
 		<div>
-			<script type="text/javascript" src="http://rive.rs/javascripts/tumblr.min.js?minsize=100&maxsize=200&order=alphabetical"></script>
+			<script type="text/javascript" src="http://rive.rs/javascripts/tumblr.min.js?minsize=90&maxsize=200&order=alphabetical"></script>
 		</div>
 	</section>
 	
@@ -267,5 +276,18 @@ a:hover {
 <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
 <script type="text/javascript" src="http://matsuoshi.github.io/plumnote/plumnote.js"></script>
 <script type="text/javascript" src="/api/read/json?callback=plumnote_recent_posts&amp;num=5"></script>
+
+{block:IfGoogleAnalyticsID}
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{Text:Google Analytics ID}']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+{/block:IfGoogleAnalyticsID}
 </body>
 </html>
