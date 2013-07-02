@@ -250,7 +250,7 @@ header nav ul li {
   max-width: 100%;
 }
 #main article h3, #main article h4, #main article h5, #main article h6 {
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
   font-weight: bold;
   border-left-style: solid;
@@ -389,9 +389,15 @@ pre.prettyprint li {
   padding-left: 8px;
   border-left-width: 4px;
 }
-#main article #tumblrinlink p {
+#main article #tumblrinlink li {
   margin: 0.2em 0;
 }
-#main article #tumblrinlink img {
+#main article #tumblrinlink li p {
+  display: inline;
+}
+#main article #tumblrinlink li img {
   display: none;
+}
+#main article #tumblrinlink #inlink-logo {
+  text-align: right;
 }
