@@ -56,6 +56,7 @@ hr {
  * layout
  */
 body {
+	font-family: "Open Sans", "Meiryo", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	max-width: $max-width;
 	margin: 0 auto;
@@ -185,12 +186,10 @@ header {
 			li {
 				margin-top: 0.3em;
 				margin-bottom: 0.3em;
+				list-style-type: disc;
 			}
 		}
-		ul li {
-			list-style-type: disc;
-		}
-		ol li {
+		ol > li {
 			list-style-type: decimal;
 		}
 		

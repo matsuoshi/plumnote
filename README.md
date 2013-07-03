@@ -30,6 +30,7 @@ Plumnote : simple Tumblr theme
 
 ## history
 
+- ver 0.2: 2013.07.03
 - ver 0.1: 2013.06.28
 
 ## author

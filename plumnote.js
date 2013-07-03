@@ -1,7 +1,6 @@
 /*
  *	plumnote.js
  */
-
 jQuery(function($)
 {
 	// tweet button
@@ -11,7 +10,6 @@ jQuery(function($)
 	$('article pre').addClass('prettyprint').addClass('linenums');
 	prettyPrint();
 });
-
 
 function plumnote_recent_posts(resp) {
 	var posts = resp.posts;
